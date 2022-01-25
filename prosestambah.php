@@ -16,14 +16,15 @@
     $ni = $_POST['ni'];
     $pkot = $_POST['pkot'];
     $img = $_FILES['img']['name'];
-    
-    // menginput data ke database
-    mysqli_query($conn,"INSERT INTO cs VALUES('','$nama','$ttl','$tl','$wn','$almt','$email','$nohp','$askl','$na','$ni','$pkot','$img')") or die(mysqli_error($koneksi));
 
-    echo "<script>alert('Data Berhasil Disimpan.');window.location='index.php';</script>";
-
-    
-    // mengalihkan halaman kembali ke index.php
-    header("location:index.php");
-    
+                    
+                    // menginput data ke database
+                    mysqli_query($conn,"INSERT INTO cs VALUES('','$nama','$ttl','$tl','$wn','$almt','$email','$nohp','$askl','$na','$ni','$pkot','$img')") or die(mysqli_error($koneksi));
+                    
+                    echo "<script>alert('Data Berhasil Disimpan.');window.location='index.php';</script>";
+                    
+                    
+                    // mengalihkan halaman kembali ke index.php
+                    header("location:index.php");
+                    
 ?>

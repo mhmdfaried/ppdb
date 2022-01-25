@@ -15,6 +15,6 @@ if($cek > 0){
 	$_SESSION['status'] = "login";
 	header("location:dtbs.php");
 }else{
-	header("location:login.php");
+	echo "<script>alert('Username dan Password Salah.');window.location='login.php';</script>";
 }
 ?>

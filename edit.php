@@ -94,7 +94,7 @@
                         </tr>
                         <tr>
                             <td><input type="file" name="img" required="" class="form-control"
-                                    value="<?= $row['pkot']; ?>"></td>
+                                    value="<?= $row['img']; ?>"></td>
                         </tr> <br>
                         <!-- <tr><td><input type="submit" value="kirim"/></td><td></td></tr> -->
                     </table>
