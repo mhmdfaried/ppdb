@@ -15,16 +15,28 @@
     $na = $_POST['na'];
     $ni = $_POST['ni'];
     $pkot = $_POST['pkot'];
-    $img = $_FILES['img']['name'];
+    $img = upload();
+    
+    // menginput data ke database
+    mysqli_query($conn,"INSERT INTO cs VALUES('','$nama','$ttl','$tl','$wn','$almt','$email','$nohp','$askl','$na','$ni','$pkot','$img')") or die(mysqli_error($koneksi));
+    
+    echo "<script>alert('Data Berhasil Disimpan.');window.location='index.php';</script>";
+    
+    
+    // mengalihkan halaman kembali ke index.php
+    header("location:index.php");
+    
+    function upload(){
+        $foto = $_FILES['img']['name'];
+        $tmp_file = $_FILES['img']['tmp_name'];
+        move_uploaded_file($tmp_file , 'img/'. $foto);
+        return $foto;
 
-                    
-                    // menginput data ke database
-                    mysqli_query($conn,"INSERT INTO cs VALUES('','$nama','$ttl','$tl','$wn','$almt','$email','$nohp','$askl','$na','$ni','$pkot','$img')") or die(mysqli_error($koneksi));
-                    
-                    echo "<script>alert('Data Berhasil Disimpan.');window.location='index.php';</script>";
-                    
-                    
-                    // mengalihkan halaman kembali ke index.php
-                    header("location:index.php");
+    }
+
+
+
+
+
                     
 ?>

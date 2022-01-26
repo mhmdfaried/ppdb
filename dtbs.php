@@ -13,7 +13,7 @@
 
 <body>
 
-    <div class="container col-md-8 mt-4">
+    <div class="container col-md-14 mt-4">
         <h1>DATA SISWA</h1>
         <!-- <div class="card"> -->
         <!-- <div class="card-header bg-dark text-white ">
@@ -62,7 +62,7 @@
                         <td><?= $row['na']; ?></td>
                         <td><?= $row['ni']; ?></td>
                         <td>Rp <?= $row['pkot']; ?> /bulan </td>
-                        <td style="text-align: center;"><img src="img/<?php echo $row['img']; ?>" style="width: 120px;">
+                        <td style="text-align: center;"><img src="<?php echo "img/".$row['img']; ?>" style="width: 120px;">
                         </td>
                         <td>
                             <a href="edit.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-warning">Edit</a>

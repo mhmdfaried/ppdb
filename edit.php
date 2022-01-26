@@ -88,12 +88,16 @@
                     <table>
                         <tr>
                             <td>
-                                <h6>Uploud Foto 4x6</h6>
+                                <h6>Upload Foto 4x6</h6>
                             </td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td><input type="file" name="img" required="" class="form-control"
+                            <td>
+                                <img width="120px" src="<?php echo "img/".$row['img']; ?>"></img> 
+                            </td>
+                            <td>
+                                <input type="file" name="img" required="" class="form-control"
                                     value="<?= $row['img']; ?>"></td>
                         </tr> <br>
                         <!-- <tr><td><input type="submit" value="kirim"/></td><td></td></tr> -->
@@ -122,9 +126,9 @@
                     $na = $_POST['na'];
                     $ni = $_POST['ni'];
                     $pkot = $_POST['pkot'];
-                    $img = $_POST['img'];
+                    $img = $_FILES['img']['name'];
 
-                    mysqli_query($conn, "UPDATE cs SET id='$id' , nama='$nama' , ttl='$ttl' , wn='$wn' , almt='$almt' , almt='$almt' , email='$email' , nohp='$nohp' , askl='$askl' , na='$na' , ni='$ni' , pkot='$pkot',img='$img'   where id ='$id'") or die(mysqli_error($conn));
+                    mysqli_query($conn, "UPDATE cs SET nama='$nama' , ttl='$ttl' , wn='$wn' , almt='$almt' , almt='$almt' , email='$email' , nohp='$nohp' , askl='$askl' , na='$na' , ni='$ni' , pkot='$pkot',img='$img'   where id ='$id'") or die(mysqli_error($conn));
 
                     echo "<script>alert('data berhasil diupdate.');window.location='dtbs.php';</script>";
                 }

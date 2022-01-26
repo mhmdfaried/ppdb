@@ -42,6 +42,7 @@
     <body>
         <section class="page-section" id="contact">
             <div class="container">
+                <br>
                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Pendaftaran</h2>
                 <br>
                 <div class="row justify-content-center">
@@ -50,7 +51,7 @@
                             action="prosestambah.php" enctype="multipart/form-data">
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="nama" name="nama" type="text"
-                                    placeholder="Masukkan Nama Lengkap Anda" data-sb-validations="required" />
+                                    placeholder="Masukkan Nama Lengkap Anda" data-sb-validations="required" autofocus="" />
                                 <label for="name">Nama Lengkap</label>
                                 <div class="invalid-feedback" data-sb-feedback="name:required">Nama Lengkap harus diisi.
                                 </div>
@@ -128,7 +129,7 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <h6>Uploud Foto 4x6</h6>
+                                        <h6>Upload Foto 4x6</h6>
                                     </td>
                                     <td></td>
                                 </tr>
@@ -148,6 +149,6 @@
                     </div>
                 </div>
             </div>
-        </section </body>
-
+</section> 
+        </body>
 </html>
