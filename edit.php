@@ -12,6 +12,32 @@
 <link href="styles.css" rel="stylesheet" />
 
 <body>
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <img src="img/logo.png" width="100" height=45" alt="">
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="index.php">Beranda</a></li>
+                    <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="index.php">Profil Sekolah</a></li> -->
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="daftar.php">Pendaftaran</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="login.php">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>    
+    <br>
+    <br>
+    <br>
     <div class="container col-md-6 mt-4">
         <h1>Edit Data Siswa</h1>
         <div class="card">
@@ -29,6 +55,7 @@
 
                 ?>
                 <form action="" method="post" role="form" enctype="multipart/form-data">
+                <input type="hidden" name="gl" value="<?= $row["img"]; ?>">
                     <div class="form-group">
                         <label>Nama Lengkap : </label>
                         <input type="hidden" name="id" required="" class="form-control" value="<?= $row['id']; ?>">
@@ -97,7 +124,7 @@
                                 <img width="120px" src="<?php echo "img/".$row['img']; ?>"></img> 
                             </td>
                             <td>
-                                <input type="file" name="img" required="" class="form-control"
+                                <input type="file" name="img" class="form-control"
                                     value="<?= $row['img']; ?>"></td>
                         </tr> <br>
                         <!-- <tr><td><input type="submit" value="kirim"/></td><td></td></tr> -->
@@ -112,25 +139,38 @@
                 </form>
 
                 <?php
+            
+            if (isset($_POST['submit'])) {
+                $id = $_POST['id'];
+                $nama = $_POST['nama'];
+                $ttl = $_POST['ttl'];
+                $tl = $_POST['tl'];
+                $wn = $_POST['wn'];
+                $almt = $_POST['almt'];
+                $email = $_POST['email'];
+                $nohp = $_POST['nohp'];
+                $askl = $_POST['askl'];
+                $na = $_POST['na'];
+                $ni = $_POST['ni'];
+                $pkot = $_POST['pkot'];
+                $gl = $_POST['gl'];
+                if ( $_FILES ['img']['error']=== 4 ){
+                    $gambar = $gl;
+                } else {
+                    $gambar = upload();
+                }
+                
 
-                if (isset($_POST['submit'])) {
-                    $id = $_POST['id'];
-                    $nama = $_POST['nama'];
-                    $ttl = $_POST['ttl'];
-                    $tl = $_POST['tl'];
-                    $wn = $_POST['wn'];
-                    $almt = $_POST['almt'];
-                    $email = $_POST['email'];
-                    $nohp = $_POST['nohp'];
-                    $askl = $_POST['askl'];
-                    $na = $_POST['na'];
-                    $ni = $_POST['ni'];
-                    $pkot = $_POST['pkot'];
-                    $img = $_FILES['img']['name'];
-
-                    mysqli_query($conn, "UPDATE cs SET nama='$nama' , ttl='$ttl' , wn='$wn' , almt='$almt' , almt='$almt' , email='$email' , nohp='$nohp' , askl='$askl' , na='$na' , ni='$ni' , pkot='$pkot',img='$img'   where id ='$id'") or die(mysqli_error($conn));
+                    mysqli_query($conn, "UPDATE cs SET nama='$nama' , ttl='$ttl' , wn='$wn' , almt='$almt' , almt='$almt' , email='$email' , nohp='$nohp' , askl='$askl' , na='$na' , ni='$ni' , pkot='$pkot',img='$gambar'   where id ='$id'") or die(mysqli_error($conn));
 
                     echo "<script>alert('data berhasil diupdate.');window.location='dtbs.php';</script>";
+                    
+                    function upload(){
+                        $foto = $_FILES['img']['name'];
+                        $tmp_file = $_FILES['img']['tmp_name'];
+                        move_uploaded_file($tmp_file , 'img/'. $foto);
+                        return $foto;
+                    }
                 }
 
 
@@ -138,6 +178,7 @@
                 ?>
             </div>
         </div>
+        <br>    
     </div>
 
 
